@@ -11,7 +11,7 @@ jobs:
       - name: Send Discord Notification
         uses: Ilshidur/action-discord@master
         env:
-          DISCORD_WEBHOOK: https://discord.com/api/webhooks/1417628415607050241/rtSDSTLV2J1YISOuuo_imuFQ6O1XolEEr7240Urt03i4nivAIiW76WLLqgpyAHUrPJds
+          DISCORD_WEBHOOK: https://discord.com/api/webhooks/1417631604423266425/pDfUyIl1B5CK-BO5Nc8yk8E-j1dOiftleR3EQkuDnwrMxyyvZSRIcjLpKyXGLvrOAlg0
         with:
           args: |
             🔔 **New Pull Request Opened** by ${{ github.event.pull_request.user.login }}
