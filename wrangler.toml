@@ -4,43 +4,5 @@ compatibility_date = "2025-10-11"
 # Cloudflare Pages configuration
 pages_build_output_dir = "dist"
 
-[build]
-command = "pnpm run build"
-cwd = ""
-
-[build.upload]
-format = "modules"
-
 # Node.js compatibility for Astro
 compatibility_flags = ["nodejs_compat"]
-
-# Asset handling
-[site]
-bucket = "./dist"
-
-# Custom build configuration
-[[build.upload.rules]]
-type = "CompiledWasm"
-globs = ["**/*.wasm"]
-fallthrough = true
-
-# Headers and redirects
-[[headers]]
-for = "/*"
-[headers.values]
-X-Content-Type-Options = "nosniff"
-X-Frame-Options = "DENY"
-X-XSS-Protection = "1; mode=block"
-Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Cache static assets
-[[headers]]
-for = "/assets/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-# Cache images
-[[headers]]
-for = "/*.{jpg,jpeg,png,gif,webp,avif,svg,ico}"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
