@@ -1,6 +1,8 @@
 import starpodConfig from '../../starpod.config';
+import episodesData from '../../db/data/episodes';
 
 export type Episode = {
+  id: string;
   title: string;
   episodeNumber: string;
   episodeSlug: string;
@@ -11,6 +13,7 @@ export type Episode = {
     type: string;
   };
   episodeImage?: string;
+  episodeThumbnail?: string;
   content: string;
   duration: number;
 };
@@ -21,6 +24,9 @@ export type ShowInfo = {
   image: string;
 };
 
+// Alias for backwards compatibility
+export type Show = ShowInfo;
+
 export async function getShowInfo(): Promise<ShowInfo> {
   return {
     title: 'Whiskey Web and Whatnot',
@@ -30,7 +36,5 @@ export async function getShowInfo(): Promise<ShowInfo> {
 }
 
 export async function getAllEpisodes(): Promise<Episode[]> {
-  // This is a stub implementation. You'll need to provide your episode data
-  // either from a CMS, database, or static data files.
-  return [];
+  return episodesData;
 }

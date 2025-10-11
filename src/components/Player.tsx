@@ -47,7 +47,7 @@ export default function Player() {
   }
 
   useEffect(() => {
-    if (audioPlayer.current) {
+    if (audioPlayer.current && audio?.src) {
       audioPlayer.current.src = audio.src;
       audioPlayer.current.currentTime = 0;
       audioPlayer.current.play();

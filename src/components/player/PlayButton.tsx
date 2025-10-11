@@ -1,4 +1,4 @@
-import type { Episode } from '../../lib/rss';
+import type { Episode } from '../../lib/show-data';
 import { currentEpisode, isPlaying } from '../state';
 
 type Props = {
