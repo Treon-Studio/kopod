@@ -1,39 +1,56 @@
 {
-  "name": "@treonstudio/kopod",
-  "private": true,
-  "version": "1.0.0",
+  "name": "starpod",
   "type": "module",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shipshapecode/starpod.git"
+  },
+  "license": "MIT",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build --remote",
+    "preview": "astro preview",
+    "astro": "astro",
+    "db:seed": "pnpm astro db execute db/seed.ts --remote",
+    "test:e2e": "pnpm exec playwright test"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "axios": "^1.7.4",
-    "bad-words": "^4.0.0",
-    "framer-motion": "^11.0.12",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-calendar": "^5.1.0",
-    "react-color": "^2.19.3",
-    "react-dom": "^18.2.0",
-    "react-draggable": "^4.4.6",
-    "react-icons": "^5.0.1",
-    "webamp": "^1.5.0"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/db": "^0.14.14",
+    "@astrojs/preact": "^4.1.1",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/vercel": "^8.2.8",
+    "@preact/signals": "^2.3.1",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
+    "astro": "^5.14.1",
+    "astro-seo-schema": "^5.1.0",
+    "atropos": "^2.0.2",
+    "preact": "^10.27.2",
+    "rss-to-json": "^2.1.1",
+    "schema-dts": "^1.1.5",
+    "valibot": "^0.31.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "gh-pages": "^6.1.1",
-    "vite": "^5.0.8"
-  }
+    "@playwright/test": "^1.55.1",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/html-to-text": "^9.0.4",
+    "@types/node": "^22.18.7",
+    "html-to-text": "^9.0.5",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2",
+    "vite": "^6.3.6"
+  },
+  "engines": {
+    "node": "^22.0.0"
+  },
+  "packageManager": "pnpm@10.12.4"
 }

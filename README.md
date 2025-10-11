@@ -1,159 +1,112 @@
-Windows 95 Portfolio
+# Starpod
 
-Live Demo: https://yuteoctober.github.io/wins95Portfolio/
+Starpod is the easiest way to create a podcast website in 5 minutes or less and
+it is 100% free and open source.
 
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/markdown.png?raw=true)
+### Configuration
 
-React Project:
-  - Inspired by actual windows 95 and some other idea from windows 95's portfolios
-  - Everything built by me from scratch (No style component!)
+You will need to configure your RSS feed and a few other pieces of info for your
+podcast in starpod.config.mjs. We provide a util function `defineStarpodConfig`
+that provides TypeScript types and enforces the correct formats for config
+values.
 
+An example config can be found [here](./starpod.config.ts).
 
-Featured Functionality
+#### Options
 
-- Log in
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/login.gif?raw=true)
+##### blurb
 
-- Drag and Drop
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/dragDrop.gif?raw=true)
+A very short tagline for your show. Generally, no more than one sentence. Less
+is more here.
 
-- Change icon size
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/iconSize.gif?raw=true)
+**Example:**
 
-- Change background
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/bg.gif?raw=true)
+```ts
+blurb: 'A whiskey fueled fireside chat with your favorite web developers.',
+```
 
-- Run command
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/run.gif?raw=true)
+##### description
 
-- Live Chat
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/msn.gif?raw=true)
+A somewhat longer description of what your show is about. This should still
+ideally be fairly short, and should usually be 2-4 sentences.
 
-- Notification
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/Noti.gif?raw=true)
+**Example:**
 
-- Calendar
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/calendar.gif?raw=true)
+```ts
+description:
+  'Veteran web developers RobbieTheWagner, Charles William Carpenter III, and Adam Argyle host this informal, whiskey-fueled fireside chat with your favorite web devs. They discuss all things web development including JavaScript, TypeScript, EmberJS, React, Astro, SolidJS, CSS, HTML, Web3, and more. They take a unique approach and focus on getting to know the human side of developers and their hobbies outside of work, all while sampling a new whiskey that they rate on their unique tentacle scale.',
+```
 
-- Mine Sweeper
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/game.gif?raw=true)
+##### hosts
 
-- Shutting Down
-  
-![alt text](https://github.com/Yuteoctober/wins95Portfolio/blob/main/src/assets/shutdown.gif?raw=true)
+A list of your show's hosts and their info.
 
+**Example:**
 
-All the functionalities
+```ts
+hosts: [
+  {
+    name: 'RobbieTheWagner',
+    bio: 'Huge Ember and Tailwind fanboy. I used to work at Netflix btw.',
+    img: '/src/img/people/robbiethewagner.jpg',
+    github: 'https://github.com/RobbieTheWagner',
+    twitter: 'https://twitter.com/RobbieTheWagner',
+    website: 'https://robbiethewagner.dev'
+  },
+  {
+    name: 'Charles William Carpenter III',
+    bio: 'Third of his name, user of gifs, hater of ESM.',
+    img: '/src/img/people/chuckcarpenter.jpg',
+    github: 'https://github.com/chuckcarpenter',
+    twitter: 'https://twitter.com/CharlesWthe3rd'
+  },
+  {
+    name: 'Adam Argyle',
+    bio: 'Devigner unicorn, CSS dork, punky but nice.',
+    img: 'argyleink.jpg',
+    github: 'https://github.com/argyleink',
+    twitter: 'https://x.com/argyleink',
+    website: 'https://nerdy.dev'
+  }
+],
+```
 
-  - Drag and Drop
-  - Shrink and Expand window
-  - Start Menu
-  - Resize window
-  - Hide and unhide
-  - One click to highlight
-  - Double Click to open (also works on mobile using usestate to capture the first touch and counting time within 3ms)
-  - Introduce Clippy assistant, who always gives you inspiration speeches
-  - now Clippy has function to show up and give you advices, when you click on certain thing
-  - Added Shutdown Button
-    - Shutdown
-    - Restart
-    - log out
+##### platforms
 
-  - Added animation on Shutdown
-  - Added Log in page 
-    - Added mario animation running
-    - Click on ? button can increase mario's size
+Links to the platforms your show is available on.
 
-  - Added MSN
-    - Live chat app connected to backend Node, Express and Mongodb    (free server is slow sometimes)
-    - Chat is live and has expiration key each session to prevent spam
-    - Added filter words
-    - Added auto delete for spams on the server side
+**Example:**
 
-  - Added MineSweeper
-    - flag can now be placed on desktop
+```ts
+platforms: {
+  apple:
+    'https://podcasts.apple.com/us/podcast/whiskey-web-and-whatnot/id1552776603?uo=4?mt=2&ls=1',
+  overcast: 'https://overcast.fm/itunes1552776603',
+  spotify: 'https://open.spotify.com/show/19jiuHAqzeKnkleQUpZxDf',
+  youtube: 'https://www.youtube.com/@WhiskeyWebAndWhatnot/'
+},
+```
 
-  - Added Settings
-    - Wallpaper can now be changed
-    - Theme will also be changed along with wallpapaer
+##### rssFeed
 
-  - Added Run command 
-    - Created Run command windows 10/04/2024
-    - Now Run command is fully functioned
-    - Added Error handling when type in the wrong file name
+The url to the RSS feed where your podcast is hosted.
 
-  - Added new drag and drop feature
-    - now every icon can be drag and drop to any folder
-    - fixed bug where dragging out of fold cause other icon to flow in different direction by adding key to its container to rearrange(re-mount) the container
-    - icons will now be saved in user localstroage
+**Example:**
 
-  - Added notification when page loaded
-    - display message and running animation
+```ts
+rssFeed: 'https://rss.art19.com/whiskey-web-and-whatnot';
+```
 
-  - Added MSN notification
-    - Notification will pops up when there is a new message when MSN is hidden or closed
+#### Setting up the contact form
 
-  - Now MSN live chat is using websocket instead of API for better performance
-    - Added Reconnecting websocket, reconnect chat after user nevigate away and come back
+The contact form hits an APIRoute at `/api/contact`. It is currently configured
+to send the form data to a Slack channel webhook I had setup. It reads the url
+from `import.meta.env.SLACK_WEBHOOK`, so if you define a `SLACK_WEBHOOK`
+environment variable it should work for you. Of course, feel free to customize
+the code [here](./src/pages/api/contact.ts) to send the data elsewhere as you
+see fit.
 
-  - Added Icon size adjustable on the icon next to the clock on footer
+#### Configuring guests
 
-  - Added Calender by clicking the time on the footer 10/30/2024
-
-  - Added sub folder on start menu imitating real windows 95 functionality 11/06/2024
-
-  - Added BitCoin price real-time tracking display and icon celebrating BTC hits $100k 12/5/2024
-    - User can hide / unhide in tap bar 
-    - Using Coinbase websocket to display
-
-  - Added Effect pattern in settings 1/19/2025
-  - Added My Computer and working on file system 1/26/2025
-
-  - Added Right Click and still working on more functions 2/13/2025
-    - on Desktop uses right click
-    - on mobile uses long press 
-    - Right click can be done on icon now
-
-  - Added Right click on each icon and icon in bin 2/16/2025
-    - right clicking on icon now able to open and delete
-    - after icon being deleted, it will move to RecycleBin
-    - right click on icon in RecycleBin will show option to restore
-    - clicking on restore will store the icon to its previous position
-  
-  - Added Paint using Library [Paint](https://github.com/1j01/jspaint)
-  - Added AiAgent project 3/1/2025
-
-  - Added News icon on task bar
-    - can display tatest news by clicking on the article
-    - connected to back-end
-
-  - Added Tempature on news App 18/06/2025
-    - can detect user's location
-    - able to switch between Celcius and Farenheit 21/06/2025
-
-  - Added Patch App 21/06/2025
-  - Now weather prediction can track user's local time 22/6/2025
-  - Added Weather 🌙 sticker when its night time 22/6/2025
-
-  - Added color picker to Settings for background customization. 26/06/2025
-
-
-Library used:
-  - React Draggable => drag and drop functionality
-  - Framer-motion => for some animation
-  - Webamp => Winamp music player (for music app)
-  - npm i react-calendar => for calender
-
-All the windows 95 icons and others can be found here
-special thanks to whoever own this web
-site: https://oldwindowsicons.tumblr.com/tagged/windows%2095
-
+We use Turso and Astro DB to setup guests per episode. If you would also like to
+do this, you will need a Turso account.
