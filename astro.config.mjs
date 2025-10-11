@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import db from '@astrojs/db';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -37,7 +36,6 @@ export default defineConfig({
   site: 'https://whiskey.fm',
   trailingSlash: 'never',
   integrations: [
-    db(),
     preact(),
     sitemap({
       filter: (page) => {
