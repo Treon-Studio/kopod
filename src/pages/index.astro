@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import EpisodeList from '../components/EpisodeList.astro';
-import { getAllEpisodes, getShowInfo } from '../lib/rss';
+import { getAllEpisodes, getShowInfo } from '../lib/show-data';
 const episodes = await getAllEpisodes();
 const show = await getShowInfo();
 const title = `${show.title}`;

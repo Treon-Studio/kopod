@@ -27,7 +27,6 @@
     "astro-seo-schema": "^5.1.0",
     "atropos": "^2.0.2",
     "preact": "^10.27.2",
-    "rss-to-json": "^2.1.1",
     "schema-dts": "^1.1.5",
     "valibot": "^0.31.1"
   },

@@ -12,7 +12,7 @@ import Platforms from '../components/Platforms.astro';
 import Player from '../components/Player';
 import ShowArtwork from '../components/ShowArtwork.astro';
 
-import { getShowInfo } from '../lib/rss';
+import { getShowInfo } from '../lib/show-data';
 import starpodConfig from 'starpod.config';
 
 import '../styles/global.css';
@@ -110,7 +110,6 @@ const description = Astro.props.description ?? starpodConfig.description;
         about: starpodConfig.blurb,
         description: show.description,
         url: canonicalURL.toString(),
-        webFeed: starpodConfig.rssFeed,
         author: {
           '@type': 'Organization',
           name: show.title,

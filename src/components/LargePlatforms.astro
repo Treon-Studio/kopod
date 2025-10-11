@@ -5,7 +5,7 @@ import OvercastIcon from '../svgs/overcast.svg?raw';
 import SpotifyIcon from '../svgs/spotify.svg?raw';
 import YouTubeIcon from '../svgs/youtube.svg?raw';
 
-const { platforms, rssFeed } = starpodConfig;
+const { platforms } = starpodConfig;
 ---
 
 <div
@@ -68,16 +68,6 @@ const { platforms, rssFeed } = starpodConfig;
             <Fragment set:html={YouTubeIcon} />
           </span>
         </span>
-      </a>
-    )
-  }
-  {
-    rssFeed && (
-      <a
-        class="animated-bottom-border font-bold text-light-text-heading after:mt-4 dark:text-white"
-        href={rssFeed}
-      >
-        <span class="flex items-center">RSS Feed</span>
       </a>
     )
   }

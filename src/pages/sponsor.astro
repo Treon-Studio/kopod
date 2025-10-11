@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 
 import Layout from '../layouts/Layout.astro';
 import AdPackageCard from '../components/AdPackageCard.astro';
-import { getShowInfo } from '../lib/rss';
+import { getShowInfo } from '../lib/show-data';
 const show = await getShowInfo();
 const title = `${show.title}`;
 

@@ -49,10 +49,6 @@ export type StarpodConfig = {
     spotify?: string;
     youtube?: string;
   };
-  /**
-   * The url to the RSS feed where your podcast is hosted.
-   */
-  rssFeed: string;
 };
 
 export const defineStarpodConfig = (config: StarpodConfig) => config;

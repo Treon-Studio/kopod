@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getAllEpisodes } from '../../../lib/rss';
+import { getAllEpisodes } from '../../../lib/show-data';
 
 const episodesPerPage = 15;
 const allEpisodes = await getAllEpisodes();

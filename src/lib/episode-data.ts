@@ -3,24 +3,18 @@ import peoplePerEpisode from '../../db/data/people-per-episode';
 import sponsors from '../../db/data/sponsors';
 import sponsorsPerEpisode from '../../db/data/sponsors-per-episode';
 
-export type Person = {
+export type HostOrGuest = {
   id: string;
+  img: string | null;
+  isHost: boolean;
   name: string;
-  img?: string;
 };
 
 export type Sponsor = {
   id: string;
+  img: string | null;
   name: string;
-  img?: string;
   url: string;
-};
-
-export type HostOrGuest = {
-  id: string;
-  img?: string;
-  isHost: boolean;
-  name: string;
 };
 
 const DEFAULT_HOSTS = ['argyleink', 'chuckcarpenter', 'robbiethewagner'];
@@ -32,11 +26,13 @@ export function getHostsAndGuestsForEpisode(episodeSlug: string): HostOrGuest[] 
     return [];
   }
 
-  return episodePeople.map((personRef) => {
+  const results: HostOrGuest[] = [];
+
+  for (const personRef of episodePeople) {
     const person = people.find((p) => p.id === personRef.id);
 
     if (!person) {
-      return null;
+      continue;
     }
 
     const isHost =
@@ -44,13 +40,15 @@ export function getHostsAndGuestsForEpisode(episodeSlug: string): HostOrGuest[] 
         ? Boolean(personRef.host)
         : DEFAULT_HOSTS.includes(personRef.id);
 
-    return {
+    results.push({
       id: person.id,
-      img: person.img,
+      img: ('img' in person ? person.img : null) as string | null,
       isHost,
       name: person.name
-    };
-  }).filter((p): p is HostOrGuest => p !== null);
+    });
+  }
+
+  return results;
 }
 
 export function getSponsorsForEpisode(episodeSlug: string): Sponsor[] {
@@ -60,10 +58,22 @@ export function getSponsorsForEpisode(episodeSlug: string): Sponsor[] {
     return [];
   }
 
-  return episodeSponsors
-    .map((sponsorRef) => {
-      const sponsor = sponsors.find((s) => s.id === sponsorRef.id);
-      return sponsor || null;
-    })
-    .filter((s): s is Sponsor => s !== null);
+  const results: Sponsor[] = [];
+
+  for (const sponsorRef of episodeSponsors) {
+    const sponsor = sponsors.find((s) => s.id === sponsorRef.id);
+
+    if (!sponsor) {
+      continue;
+    }
+
+    results.push({
+      id: sponsor.id,
+      img: ('img' in sponsor ? sponsor.img : null) as string | null,
+      name: sponsor.name,
+      url: sponsor.url
+    });
+  }
+
+  return results;
 }
